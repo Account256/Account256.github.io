@@ -6,6 +6,20 @@
   <body>
     <!-- ここに書きたい内容を書く -->
     <h1>タイトル</h1>
+    <p>現在時刻は<span id="real-time"></span>です</p>
+
+    <script type="text/javascript">
+      function Time() {
+        var realTime = new Date();
+        var hour = realTime.getHours();
+        var minutes  = realTime.getMinutes();
+        var seconds  = realTime.getSeconds();
+        var text = hour + ":" + minutes + ":" + seconds;
+        document.getElementById("real-time").innerHTML = text;
+      }
+    setInterval('Time()',1000);
+    </script>
+    
     <h2>見出し</h2>
     <p>
       文章<br>
