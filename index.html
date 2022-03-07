@@ -1,30 +1,49 @@
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <title>タイトル</title>
-  </head>
-  <body>
-    <!-- ここに書きたい内容を書く -->
-    <h1>タイトル</h1>
-    <p>現在時刻は<span id="real-time"></span>です</p>
 
-    <script type="text/javascript">
-      function Time() {
-        var realTime = new Date();
-        var hour = realTime.getHours();
-        var minutes  = realTime.getMinutes();
-        var seconds  = realTime.getSeconds();
-        var text = hour + ":" + minutes + ":" + seconds;
-        document.getElementById("real-time").innerHTML = text;
+<head>
+  <meta charset='utf-8'>
+  <title>タイトル</title>
+</head>
+
+<body>
+  <!-- ここに書きたい内容を書く -->
+  <h1>タイトル</h1>
+  <p>現在時刻は<span id="real-time"></span>です</p>
+
+  <script type="text/javascript">
+    function Time() {
+      var realTime = new Date();
+      var hours = realTime.getHours();
+      if (0 <= hours && hours < 10) {
+        hours = "0" + hours;
       }
-    setInterval('Time()',1000);
-    </script>
-    
-    <h2>見出し</h2>
-    <p>
-      文章<br>
-      <a href="https://yahoo.co.jp">yahooをこのタブで開く</a><br>
-      <a href="https://yahoo.co.jp" target="_blank" rel="noopener noreferrer">yahooを新しいタブで開く</a>
-    </p>
-  </body>
+      var minutes = realTime.getMinutes();
+      if (0 <= minutes && minutes < 10) {
+        minutes = "0" + minutes;
+      }
+      var seconds = realTime.getSeconds();
+      if (0 <= seconds && seconds < 10) {
+        seconds = "0" + seconds;
+      }
+      var ms = realTime.getMilliseconds();
+      if (0 <= ms && ms < 10) {
+        ms = "00" + ms;
+      } else if (10 <= ms && ms < 100) {
+        ms = "0" + ms;
+      }
+      var text = hours + ":" + minutes + ":" + seconds + ":" + ms;
+      document.getElementById("real-time").innerHTML = text;
+    }
+    setInterval('Time()', 10);
+  </script>
+
+  <h2>見出し</h2>
+  <p>
+    ハイパーリンク<br>
+    <a href="https://yahoo.co.jp">yahooをこのタブで開く</a><br>
+    <a href="https://yahoo.co.jp" target="_blank" rel="noopener noreferrer">yahooを新しいタブで開く</a><br>
+    <a href="./shortcutList/vscode.html">vscodeのショートカット集</a>
+  </p>
+</body>
+
 </html>
